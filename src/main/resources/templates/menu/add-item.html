@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <title th:text="${title}">Title</title>
-</head>
-<body>
-    <form th:object="${form}" method="post">
-        <div class="form-group">
-            <label th:for="cheeseId">Cheese</label>
-            <select th:field="*{cheeseId}">
+<head th:replace="fragments :: head"></head>
 
-                    <option th:each="cheese : *{cheeses}"
-                            th:value="${cheese.id}"
-                            th:text="${cheese.name}"></option>
-            </select>
+<body class="container">
 
-            <input type="hidden" name="menuID" th:value="*{menu.id}"/>
-            <span th:errors="*{cheeseId}" class="error"></span>
-        </div>
+<h1 th:text="${title}">Default Title</h1>
 
-            <input type="submit" value="Add Cheese" />
-    </form>
+<nav th:replace="fragments :: navigation"></nav>
 
+<form th:object="${form}" method="post" style="max-width:800px;">
+
+    <div class="form-group">
+        <label th:for="cheeseId">Cheese</label>
+        <select th:field="*{cheeseId}">
+            <option th:each="cheese : *{cheeses}"
+                    th:value="${cheese.id}"
+                    th:text="${cheese.name}"></option>
+        </select>
+        <input type="hidden" name="menuId" th:value="*{menu.id}" />
+        <span th:errors="*{cheeseId}" class="error"></span>
+    </div>
+    <input type="submit" value="Add cheese" />
+</form>
 </body>
 </html>

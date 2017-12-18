@@ -5,6 +5,7 @@ import org.launchcode.models.Menu;
 
 import javax.validation.constraints.NotNull;
 
+
 public class AddMenuItemForm {
 
     @NotNull
@@ -50,9 +51,9 @@ public class AddMenuItemForm {
     }
 
     public AddMenuItemForm() {
-
     }
-    public AddMenuItemForm(Menu menu, Iterable<Cheese> cheeses){
+
+    public AddMenuItemForm(Menu menu, Iterable<Cheese> cheeses) {
         this.menu = menu;
         this.cheeses = cheeses;
     }
